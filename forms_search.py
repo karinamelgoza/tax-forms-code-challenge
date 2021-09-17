@@ -32,7 +32,7 @@ def search_irs_forms(search):
 
         results_info.append(info)
 
-    return json.dumps(results_info, indent=1)
+    return json.dumps(results_info, indent=2)
 
 
 if __name__ == "__main__":
