@@ -3,9 +3,8 @@ import json
 from bs4 import BeautifulSoup, StopParsing
 
 
-def search_irs_forms():
+def search_irs_forms(search):
 
-    search = ["Form W-2", "Form 1095-C"]
     results_info = []
 
     for search_term in search:
@@ -37,4 +36,4 @@ def search_irs_forms():
 
 
 if __name__ == "__main__":
-    print(search_irs_forms())
+    print(search_irs_forms(["Form W-2", "Form 1095-C", "Form W-2 P"]))
