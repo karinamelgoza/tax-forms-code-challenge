@@ -19,13 +19,19 @@ def download_forms(form_name, beg_year, end_year):
         results = soup.find(
             "a", href=lambda href: href and str(year) in href, string=form_name)
 
-        link = results.get('href')
+        if results:
 
-        with open(f"{form_name}/{form_name}-{year}.pdf", "wb") as f:
-            response = requests.get(link)
-            f.write(response.content)
+            link = results.get('href')
 
-        print(f"{link} downloaded")
+            with open(f"{form_name}/{form_name}-{year}.pdf", "wb") as f:
+                response = requests.get(link)
+                f.write(response.content)
+
+            print(f"{form_name}-{year} downloaded")
+
+        else:
+
+            print("Not Available")
 
 
 if __name__ == "__main__":

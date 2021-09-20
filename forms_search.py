@@ -18,16 +18,24 @@ def search_irs_forms(search):
         forms = [form_link.parent.parent for form_link in results]
         years = []
 
-        for form in forms:
+        if results:
 
-            year = int(form.find("td", class_="EndCellSpacer").text.strip())
-            years.append(year)
+            for form in forms:
+
+                year = int(
+                    form.find("td", class_="EndCellSpacer").text.strip())
+                years.append(year)
+
+                info = {
+                    "form_number": form.find("a", string=search_term).text.strip(),
+                    "form_title": form.find("td", class_="MiddleCellSpacer").text.strip(),
+                    "min_year": min(years),
+                    "max_year": max(years)
+                }
+        else:
 
             info = {
-                "form_number": form.find("a", string=search_term).text.strip(),
-                "form_title": form.find("td", class_="MiddleCellSpacer").text.strip(),
-                "min_year": min(years),
-                "max_year": max(years)
+                search_term: "Not Found"
             }
 
         results_info.append(info)
