@@ -1,6 +1,6 @@
 import requests
 import json
-from bs4 import BeautifulSoup, StopParsing
+from bs4 import BeautifulSoup
 
 
 def search_irs_forms(search):
@@ -43,5 +43,5 @@ def search_irs_forms(search):
     return json.dumps(results_info, indent=2)
 
 
-if __name__ == "__main__":
-    print(search_irs_forms(["Form W-2", "Form 1095-C", "Form W-2 P"]))
+# if __name__ == "__main__":
+#     print(search_irs_forms(["Form W-2", "Form 1095-C", "Form W-2 P"]))

@@ -12,7 +12,12 @@ def download_forms(form_name, beg_year, end_year):
     soup = BeautifulSoup(page.content, "html.parser")
 
     path = os.getcwd()
-    os.mkdir(f"{path}/{form_name}")
+
+    try:
+        os.mkdir(f"{path}/{form_name}")
+
+    except FileExistsError:
+        pass
 
     for year in range(beg_year, end_year+1):
 
@@ -34,5 +39,5 @@ def download_forms(form_name, beg_year, end_year):
             print("Not Available")
 
 
-if __name__ == "__main__":
-    download_forms('Form W-2', 2018, 2020)
+# if __name__ == "__main__":
+#     download_forms('Form W-2', 2018, 2020)
